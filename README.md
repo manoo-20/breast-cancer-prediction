@@ -1,5 +1,5 @@
 # 🧠 Breast Cancer Prediction using Machine Learning
-
+![App Screenshot](screenshot.png)
 ## 📌 Overview
 
 This project predicts whether a tumor is **Malignant (cancerous)** or **Benign (non-cancerous)** using Machine Learning models.
