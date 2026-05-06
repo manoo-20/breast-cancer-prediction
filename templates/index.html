@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+        }
+
+        .container {
+            width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        input {
+            width: 45%;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #27ae60;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #219150;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function autofillBenign() {
+            const values = [
+                12.3,15.5,80,450,0.09,0.08,0.05,0.03,0.16,0.06,
+                0.2,0.8,1.5,15,0.004,0.01,0.01,0.005,0.01,0.002,
+                13.5,18,90,550,0.1,0.12,0.1,0.05,0.2,0.07
+            ];
+            fillInputs(values);
+        }
+
+        function autofillMalignant() {
+            const values = [
+                18.0,25.0,120,1000,0.12,0.3,0.4,0.2,0.3,0.09,
+                1.0,2.5,6.0,100,0.01,0.05,0.07,0.02,0.03,0.01,
+                25.0,35.0,170,2000,0.15,0.6,0.7,0.3,0.4,0.1
+            ];
+            fillInputs(values);
+        }
+
+        function fillInputs(values) {
+            const inputs = document.querySelectorAll("input");
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value = values[i];
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Breast Cancer Prediction</h1>
+
+<form action="/predict" method="post">
+
+<div class="section">
+<h3>Mean Features</h3>
+<input name="radius_mean" placeholder="radius_mean" required>
+<input name="texture_mean" placeholder="texture_mean" required>
+<input name="perimeter_mean" placeholder="perimeter_mean" required>
+<input name="area_mean" placeholder="area_mean" required>
+<input name="smoothness_mean" placeholder="smoothness_mean" required>
+<input name="compactness_mean" placeholder="compactness_mean" required>
+<input name="concavity_mean" placeholder="concavity_mean" required>
+<input name="concave points_mean" placeholder="concave points_mean" required>
+<input name="symmetry_mean" placeholder="symmetry_mean" required>
+<input name="fractal_dimension_mean" placeholder="fractal_dimension_mean" required>
+</div>
+
+<div class="section">
+<h3>Standard Error Features</h3>
+<input name="radius_se" placeholder="radius_se" required>
+<input name="texture_se" placeholder="texture_se" required>
+<input name="perimeter_se" placeholder="perimeter_se" required>
+<input name="area_se" placeholder="area_se" required>
+<input name="smoothness_se" placeholder="smoothness_se" required>
+<input name="compactness_se" placeholder="compactness_se" required>
+<input name="concavity_se" placeholder="concavity_se" required>
+<input name="concave points_se" placeholder="concave points_se" required>
+<input name="symmetry_se" placeholder="symmetry_se" required>
+<input name="fractal_dimension_se" placeholder="fractal_dimension_se" required>
+</div>
+
+<div class="section">
+<h3>Worst Features</h3>
+<input name="radius_worst" placeholder="radius_worst" required>
+<input name="texture_worst" placeholder="texture_worst" required>
+<input name="perimeter_worst" placeholder="perimeter_worst" required>
+<input name="area_worst" placeholder="area_worst" required>
+<input name="smoothness_worst" placeholder="smoothness_worst" required>
+<input name="compactness_worst" placeholder="compactness_worst" required>
+<input name="concavity_worst" placeholder="concavity_worst" required>
+<input name="concave points_worst" placeholder="concave points_worst" required>
+<input name="symmetry_worst" placeholder="symmetry_worst" required>
+<input name="fractal_dimension_worst" placeholder="fractal_dimension_worst" required>
+</div>
+
+<br>
+
+<button type="submit">Predict</button>
+<button type="button" onclick="autofillBenign()">Benign Sample</button>
+<button type="button" onclick="autofillMalignant()">Malignant Sample</button>
+
+</form>
+
+<div class="result">
+{{ prediction_text }}
+</div>
+
+</div>
+
+</body>
+</html>
